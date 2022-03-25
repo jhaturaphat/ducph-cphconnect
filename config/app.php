@@ -14,8 +14,8 @@ return [
     */
 
     'name' => env('APPNAME', 'CPH connect'),
-    'hosname' => env('APP_HOSNAME', 'รพร.ตะพานหิน'),
-    'cph_url' => env('CPH_URL', 'https://cph-connect.tphcp.go.th'),
+    'hosname' => env('APP_HOSNAME', 'รพร.เดชอุดม'),
+    'cph_url' => env('CPH_URL', 'https://cphconnect.detudomhospital.org'),
     'copyright' => env('APP_COPYRIGHT', 'Copyright &copy; Dr.GHOST'),
 
     'google_recaptcha_key' => env('GOOGLE_RECAPTCHA_KEY', ''),

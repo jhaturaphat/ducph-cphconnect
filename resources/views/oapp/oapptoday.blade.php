@@ -32,11 +32,11 @@ function chMonth($find)
     }
 }
 
-    $host = config('database.connections.mysql.host');
-    $db = config('database.connections.mysql.database');
-    $user = config('database.connections.mysql.username');
-    $pwd = config('database.connections.mysql.password');
-    $db_hos = config('database.connections.mysql_hos.database');
+$host = config(env('HISDB_HOST'));
+$db = config(env('HISDB_DATABASE'));
+$user = config(env('HISDB_USERNAME'));
+$pwd = config(env('HISDB_PASSWORD'));
+$db_hos = config(env('HISDB_HOST'));
 
     $myPDO = new PDO("mysql:host=$host;dbname=$db", $user, $pwd);
     $myPDO -> exec("set names utf8");
@@ -64,9 +64,9 @@ function chMonth($find)
             $txtmessage = "วันนี้คุณมีนัด \nวันที่ ".date("j",strtotime($data['nextdate']))." ".chMonth($data['nextdate'])." ".chYear($data['nextdate'])."\nเวลา ".substr($data['nexttime'],0,5)." น.\n\n".$data['note']."\n\n(ตรวจสอบรายละเอียดการนัดจากเมนูบริการออนไลน์อีกครั้ง)"; // ข้อความ
 
             // ********** ส่งข้อมูลนัดใน Line Official *********** //
-            $access_token = config('line-bot.channel_access_token');
-            $liff_url = config('line-bot.liff_url');
-            $cph_url = config('app.cph_url');
+            $access_token = config(env('LINE_BOT_CHANNEL_ACCESS_TOKEN'));
+            $liff_url = config(env('LINE_LIFF_URL_OAPP'));
+            $cph_url = config(env('CPH_URL'));
             $pushID = $idline;
     $curl = curl_init();
     curl_setopt_array($curl, array(

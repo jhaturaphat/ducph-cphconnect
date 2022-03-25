@@ -40,8 +40,8 @@
         $text_line_message4 = substr($testtext4,0,strpos($testtext4, "@"));
         $pushID = substr($testtext5,strpos($testtext5, "@")+0);
 
-        $access_token = config('line-bot.channel_access_token');
-        $liff_url_oapp = config('line-bot.liff_url_oapp');
+        $access_token = config(env('LINE_BOT_CHANNEL_ACCESS_TOKEN'));
+        $liff_url_oapp = config(env('LINE_LIFF_URL_OAPP'));
 
         $curl = curl_init();
         curl_setopt_array($curl, array(
