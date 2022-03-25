@@ -50,7 +50,7 @@ Route::get('district', 'ProvinceController@district')->name('district');
 
 Route::get('/liff', function () {
     return view('liff');
-});
+})->name('login');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/homeregister', 'HomeController@register')->name('homeregister');
@@ -71,4 +71,4 @@ Route::get('/statusq', 'OappController@statusq')->name('statusq');
 Route::get('/oappman', 'OappController@oappman')->name('oappman');
 Route::get('/oappconfirm', 'OappController@oappconfirm')->name('oappconfirm');
 
-Route::get('checkup', 'CheckupController@index')->name('checkup');
+Route::get('/checkup', 'CheckupController@index')->name('checkup');
