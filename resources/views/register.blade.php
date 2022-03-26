@@ -22,20 +22,20 @@
                 <i class="input-icon fa fa-user color-theme"></i>
                 <span>เลขบัตรประชาชน</span>
                 <em>(required)</em>
-                <input type="number" name="cid" placeholder="เลขบัตรประชาชน 13 หลัก" required autofocus>
+                <input type="number" pattern="[0-9]*" name="cid" placeholder="เลขบัตรประชาชน 13 หลัก" required autofocus>
                 <input type="hidden" name="lineid" value="{{ $userid ?? '' }}">
             </div> 
             <div class="input-style has-icon input-style-1 input-required">
                 <i class="input-icon fa fa-lock color-theme"></i>
                 <span>วันเดือนปีเกิด</span>
                 <em>(required)</em>
-                <input type="number" name="birthday" placeholder="วันเดือนปีเกิด 05122540" required>
+                <input type="number" pattern="[0-9]*" name="birthday" placeholder="วันเดือนปีเกิด 05122540" required>
             </div> 
             <div class="input-style has-icon input-style-1 input-required">
                 <i class="input-icon fa fa-phone color-theme"></i>
                 <span>เบอร์โทรศัพท์</span>
                 <em>(required)</em>
-                <input type="number" name="tel" placeholder="เบอร์โทรศัพท์" required>
+                <input type="tel" pattern="[0-9]*" name="tel" placeholder="เบอร์โทรศัพท์" required>
                 <input type="hidden" name="email" value="{{ $email }}">
                 <input type="hidden" name="consent" value="{{ $consent }}">
             </div> 
