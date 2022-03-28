@@ -56,14 +56,6 @@
 
 </div>
 
-<?php
-
-$LineLiffID = config('line-bot.liff_id');
-echo '<script type="text/javascript">';
-echo "var LineLiffID = '$LineLiffID';";
-echo '</script>';
-
-?>
 <script type="text/javascript" src="scripts/jquery.js"></script>
 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 <script type="text/javascript" src="scripts/custom.js"></script>
