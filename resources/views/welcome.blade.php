@@ -68,8 +68,9 @@
         liffId:'{{env("LINE_LIFF_ID")}}',
         withLoginOnExternalBrowser: true
         }).then((result)=>{
-            liff.ready.then(() => {
-                console.log("Access token => ",liff.getAccessToken());
+            liff.ready.then(async() => {
+                const profile = await liff.getProfile()
+                console.log(profile);
             });
             // if (!liff.isLoggedIn() && !liff.isInClient()) {
             //     window.alert('To get an access token, you need to be logged in. Tap the "login" button below and try again.');
