@@ -64,11 +64,33 @@ echo "var LineLiffID = '$LineLiffID';";
 echo '</script>';
 
 ?>
-
+<script type="text/javascript" src="scripts/jquery.js"></script>
+<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
 <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
 
 <script>
-    let lineliffid = LineLiffID;
+
+    $(async function (){
+        await liff.init({
+        liffId:'{{env("LINE_LIFF_ID")}}',
+        withLoginOnExternalBrowser: true
+        }).then((result)=>{
+            liff.ready.then(() => {
+                console.log("Access token => ",liff.getAccessToken());
+            });
+            // if (!liff.isLoggedIn() && !liff.isInClient()) {
+            //     window.alert('To get an access token, you need to be logged in. Tap the "login" button below and try again.');
+            // } else {
+            //     const accessToken = liff.getAccessToken();
+            //     console.log(accessToken);
+            // }    
+        }).catch((err)=>{
+        console.log(err);
+        
+        })
+    });
+    /*let lineliffid = LineLiffID;
     async function main() {
         liff.ready.then(() => {
             // document.getElementById("isLoggedIn").append(liff.isLoggedIn())
@@ -78,7 +100,10 @@ echo '</script>';
                 liff.login()
             }
         })
-        await liff.init({ liffId: lineliffid })
+        await liff.init({ 
+            liffId: lineliffid,
+            withLoginOnExternalBrowser: true
+        })
     }
     main()
 
@@ -97,13 +122,11 @@ echo '</script>';
         $('#userId').val(profile.userId);
         $('#decodedIDToken2').val(liff.getDecodedIDToken().email);
         await submitform();
-    }
+    }*/
 
 </script>
 
-<script type="text/javascript" src="scripts/jquery.js"></script>
-<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
+
 
 </body>
 </html>
