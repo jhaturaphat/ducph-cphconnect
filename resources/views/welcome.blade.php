@@ -40,7 +40,8 @@
                     <p class="mt-2 mb-0 boxed-text-xl">กำลังตรวจสอบข้อมูล เพื่อเข้าบริการออนไลน์</p>
                     <p class="mt-0 mb-0 boxed-text-xl">{{ config('app.hosname') }}</p>
 
-                    <form method="get" action="{{ url("/") }}/home" name="loginform" id="loginform">
+                    <form method="GET" action="{{ url("/") }}/home" name="loginform" id="loginform">
+                        <input type="hidden" id="linetoken" name="linetoken">
                         <input class="form-control" type="hidden" id="userId" name="userId">
                         <input class="form-control" type="hidden" id="decodedIDToken2" name="decodedIDToken2">
                         <a href="#" type="submit" class="btn scale-box btn-m mt-3 btn-center-l rounded-l shadow-xl bg-highlight font-800 text-uppercase">กรุณารอสักครู่...</a>
@@ -56,9 +57,9 @@
 
 </div>
 
-<script type="text/javascript" src="scripts/jquery.js"></script>
-<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
+<script src="scripts/jquery.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/custom.js"></script>
 <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
 
 <script>
@@ -69,20 +70,19 @@
         withLoginOnExternalBrowser: true
         }).then((result)=>{
             liff.ready.then(async() => {
-                const profile = await liff.getProfile()
-                console.log(profile);
-            });
-            // if (!liff.isLoggedIn() && !liff.isInClient()) {
-            //     window.alert('To get an access token, you need to be logged in. Tap the "login" button below and try again.');
-            // } else {
-            //     const accessToken = liff.getAccessToken();
-            //     console.log(accessToken);
-            // }    
+                const profile = await liff.getProfile();   
+                const accessToken = liff.getAccessToken();    
+                $('#linetoken').val(accessToken); 
+                setTimeout(function () {
+                    document.forms["loginform"].submit();
+                }, 1000);      
+            });               
         }).catch((err)=>{
-        console.log(err);
-        
+            console.log(err);        
         })
     });
+
+    
     /*let lineliffid = LineLiffID;
     async function main() {
         liff.ready.then(() => {

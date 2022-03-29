@@ -45,7 +45,7 @@ return [
         
         'mysql_hos' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
+            'url' => env('HISDATABASE_URL'),
             'host' => env('HISDB_HOST', ''),
             'port' => env('HISDB_PORT', ''),
             'database' => env('HISDB_DATABASE', ''),
@@ -67,7 +67,7 @@ return [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', ''),
-            'port' => env('DB_PORT', ''),
+            'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', ''),
             'username' => env('DB_USERNAME', ''),
             'password' => env('DB_PASSWORD', ''),
@@ -88,8 +88,8 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', ''),
-            'username' => env('DB_USERNAME', ''),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',

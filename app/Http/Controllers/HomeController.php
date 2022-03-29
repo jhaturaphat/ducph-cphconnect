@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+
 
 class HomeController extends Controller
 {
@@ -14,9 +16,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // session_start();
-        // session_destroy();
+        // if(isset($_GET["linetoken"]) && !empty($_GET["linetoken"])){
+        //     $tokenParts = explode(".", $_GET["linetoken"]);  
+        //     $tokenHeader = base64_decode($tokenParts[0]);
+        //     $tokenPayload = base64_decode($tokenParts[1]);
+        //     $jwtHeader = json_decode($tokenHeader);
+        //     $jwtPayload = json_decode($tokenPayload);   
+        // }
 
+        $check_register = DB::connection('mysql')->select('SELECT NOW()');
         if (isset($_GET["userId"])) {
     
             $userid = $_GET["userId"];

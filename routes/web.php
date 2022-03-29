@@ -53,6 +53,7 @@ Route::get('/liff', function () {
 })->name('login');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home', 'HomeController@index')->name('home');
 Route::get('/homeregister', 'HomeController@register')->name('homeregister');
 Route::get('/main', 'MainController@index')->name('main');
 Route::get('/search', 'SearchController@index')->name('search');
