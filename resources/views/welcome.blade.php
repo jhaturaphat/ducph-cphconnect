@@ -32,11 +32,7 @@
                 <div class="content mr-0 ml-0 mb-0">
                     <img class="preload-img img-fluid pl-3 pr-3" data-src="images/cphconnect/cph-connect-logo.png">
                     <p class="mt-1 mb-0 color-highlight font-12"><b>ยินดีต้อนรับ </b> </p>
-                    <h1 id="displayName" class="mt-2 mb-0 font-30"> </h1>
-                    {{-- <p id="userId" class="mt-n1 mb-0 color-highlight font-12"><b>LineID:</b> </p> --}}
-                    {{-- <p id="decodedIDToken" class="mt-n1 color-highlight font-12"><b>Email:</b> </p> --}}
-
-
+                    <h1 id="displayName" class="mt-2 mb-0 font-30"> </h1>  
                     <p class="mt-2 mb-0 boxed-text-xl">กำลังตรวจสอบข้อมูล เพื่อเข้าบริการออนไลน์</p>
                     <p class="mt-0 mb-0 boxed-text-xl">{{ config('app.hosname') }}</p>
 
@@ -44,8 +40,7 @@
                         <input type="hidden" id="linetoken" name="linetoken">
                         <input class="form-control" type="hidden" id="userId" name="userId">
                         <input class="form-control" type="hidden" id="decodedIDToken2" name="decodedIDToken2">
-                        <a href="#" type="submit" class="btn scale-box btn-m mt-3 btn-center-l rounded-l shadow-xl bg-highlight font-800 text-uppercase">กรุณารอสักครู่...</a>
-                        {{-- <a href="#" data-back-button class="btn scale-box btn-m mt-5 btn-center-l rounded-l shadow-xl bg-highlight font-800 text-uppercase">เริ่มใช้งาน</a> --}}
+                        <a href="#" type="submit" class="btn scale-box btn-m mt-3 btn-center-l rounded-l shadow-xl bg-highlight font-800 text-uppercase">กรุณารอสักครู่...</a>                       
                     </form>
 
                 </div>
@@ -66,19 +61,18 @@
 
     $(async function (){
         await liff.init({
-        liffId:'{{env("LINE_LIFF_ID")}}',
-        withLoginOnExternalBrowser: true
-        }).then((result)=>{
-            liff.ready.then(async() => {
-                const profile = await liff.getProfile();   
-                const accessToken = liff.getAccessToken();  
-                $('#displayName').text(profile.displayName);
-                $('#linetoken').val(accessToken); 
-                setTimeout(function () {
-                    document.forms["loginform"].submit();
-                }, 1000);      
+            liffId:'{{env("LINE_LIFF_ID")}}',
+            withLoginOnExternalBrowser: true
+        }).then(()=>{            
+            liff.ready.then(() => {                
+                if (liff.isLoggedIn()) {
+                    getUserProfile();
+                } else {
+                    liff.login();
+                }    
             });               
         }).catch((err)=>{
+            console.log("มี Error");
             console.log(err);        
         })
     });
@@ -100,15 +94,11 @@
         })
     }
     main()
-
-    function submitform() {
-        setTimeout(function () {
-            document.forms["loginform"].submit();
-        }, 1000);
-    }
+*/
 
     async function getUserProfile() {
         const profile = await liff.getProfile()
+        console.log(profile);
         document.getElementById("displayName").append(profile.displayName)
         document.getElementById("userId").append(profile.userId)
         // document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
@@ -116,7 +106,15 @@
         $('#userId').val(profile.userId);
         $('#decodedIDToken2').val(liff.getDecodedIDToken().email);
         await submitform();
-    }*/
+    }
+
+    function submitform() {
+        setTimeout(function () {
+            document.forms["loginform"].submit();
+        }, 1000);
+    }
+
+    
 
 </script>
 

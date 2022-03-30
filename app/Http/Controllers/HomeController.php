@@ -21,10 +21,10 @@ class HomeController extends Controller
         //     $tokenHeader = base64_decode($tokenParts[0]);
         //     $tokenPayload = base64_decode($tokenParts[1]);
         //     $jwtHeader = json_decode($tokenHeader);
-        //     $jwtPayload = json_decode($tokenPayload);   
+        //     $jwtPayload = json_decode($tokenPayload);           
         // }
 
-        $check_register = DB::connection('mysql')->select('SELECT NOW()');
+        
         if (isset($_GET["userId"])) {
     
             $userid = $_GET["userId"];

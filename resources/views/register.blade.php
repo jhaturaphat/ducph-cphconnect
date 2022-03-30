@@ -12,6 +12,7 @@
     <div class="card card-style">
         <div class="content mb-0">
             <h1 class="text-center font-900 font-40 text-uppercase mb-0">ลงทะเบียน</h1>
+            
             <p class="text-center color-highlight font-11"><br>กรุณากรอกข้อมูลตรวจสอบเพื่อลงทะเบียน</p>
 
         <form method="post" action="{{ route('sessionregister.store') }}" autocomplete="off" class="form-horizontal">
