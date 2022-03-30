@@ -71,7 +71,8 @@
         }).then((result)=>{
             liff.ready.then(async() => {
                 const profile = await liff.getProfile();   
-                const accessToken = liff.getAccessToken();    
+                const accessToken = liff.getAccessToken();  
+                $('#displayName').text(profile.displayName);
                 $('#linetoken').val(accessToken); 
                 setTimeout(function () {
                     document.forms["loginform"].submit();
