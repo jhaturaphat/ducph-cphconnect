@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::post('/verify', function () {
+    return \Response::json('OK', 200);
 });
 
 Route::get('/showimage', function () {
@@ -72,3 +77,5 @@ Route::get('/oappman', 'OappController@oappman')->name('oappman');
 Route::get('/oappconfirm', 'OappController@oappconfirm')->name('oappconfirm');
 
 Route::get('/checkup', 'CheckupController@index')->name('checkup');
+
+Route::get('/mdca/{hn}', 'MDCAController@index');

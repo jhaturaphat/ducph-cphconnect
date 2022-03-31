@@ -81,7 +81,7 @@
     
     function openWindow() {
       liff.openWindow({
-        url: "https://www.tphcp.go.th",
+        url: '{{env("APP_URL")}}',
         external: true
       })
     }
@@ -91,7 +91,7 @@
       document.getElementById("friendship").append(friend.friendFlag)
       if (!friend.friendFlag) {
         if (confirm("คุณยังไม่ได้เพิ่ม Bot เป็นเพื่อน จะเพิ่มเลยไหม?")) {
-          window.location = "https://line.me/R/ti/p/%40357twjwh"
+          window.location = '{{env("APP_URL")}}'
         }
       }
     }
@@ -156,7 +156,7 @@
           liff.login()
         }
       })
-      await liff.init({ liffId: "1654181242-WLYbaypY" })
+      await liff.init({ liffId: '{{env("LINE_LIFF_ID")}}'})
     }
     main()
   </script>

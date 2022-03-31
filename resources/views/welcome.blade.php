@@ -57,29 +57,11 @@
 <script src="scripts/custom.js"></script>
 <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
 
+
 <script>
-
-    $(async function (){
-        await liff.init({
-            liffId:'{{env("LINE_LIFF_ID")}}',
-            withLoginOnExternalBrowser: true
-        }).then(()=>{            
-            liff.ready.then(() => {                
-                if (liff.isLoggedIn()) {
-                    getUserProfile();
-                } else {
-                    liff.login();
-                }    
-            });               
-        }).catch((err)=>{
-            console.log("มี Error");
-            console.log(err);        
-        })
-    });
-
-    
-    /*let lineliffid = LineLiffID;
+    let lineliffid = '{{env('LINE_LIFF_ID')}}';
     async function main() {
+        
         liff.ready.then(() => {
             // document.getElementById("isLoggedIn").append(liff.isLoggedIn())
             if (liff.isLoggedIn()) {
@@ -88,25 +70,9 @@
                 liff.login()
             }
         })
-        await liff.init({ 
-            liffId: lineliffid,
-            withLoginOnExternalBrowser: true
-        })
+        await liff.init({ liffId: lineliffid })
     }
-    main()
-*/
-
-    async function getUserProfile() {
-        const profile = await liff.getProfile()
-        console.log(profile);
-        document.getElementById("displayName").append(profile.displayName)
-        document.getElementById("userId").append(profile.userId)
-        // document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
-        $('#displayName').val(profile.displayName);
-        $('#userId').val(profile.userId);
-        $('#decodedIDToken2').val(liff.getDecodedIDToken().email);
-        await submitform();
-    }
+    main();
 
     function submitform() {
         setTimeout(function () {
@@ -114,10 +80,20 @@
         }, 1000);
     }
 
-    
+    async function getUserProfile() {
+        const profile = await liff.getProfile()
+        document.getElementById("displayName").append(profile.displayName)
+        document.getElementById("userId").append(profile.userId)
+        // document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
+        console.log(profile);
+        $('#displayName').val(profile.displayName);
+        $('#userId').val(profile.userId);
+        $('#decodedIDToken2').val(liff.getDecodedIDToken().email);
+        await submitform();
+    }
 
 </script>
-
+    
 
 
 </body>
