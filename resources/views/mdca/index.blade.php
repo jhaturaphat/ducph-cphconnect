@@ -1,11 +1,8 @@
 @extends('layouts.theme')
 @section('menu-active-emr','active-nav')
 @section('header_script')
-{{-- header --}}
-@endsection
 
 @section('content')
-
 
 <div class="page-content header-clear-small">
     
@@ -34,7 +31,7 @@
         <div class="content mt-0 mb-0">
             <div class="list-group list-custom-large list-icon-0">
                 @foreach($model as $data)
-                <a href="{{ route('mdca/show', $data->vn) }}">
+                <a href="{{ route('mdca.show', $data->vn) }}">
                     <i class="fa font-19 fa-stethoscope rounded-s color-green1-dark"></i>
                     <span class="">{{$data->note2}}</span>
                     <strong class="">BBBB</strong>
@@ -49,5 +46,3 @@
 @endsection
 
 @section('footer_script')
-
-@endsection

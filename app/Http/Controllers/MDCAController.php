@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class MDCAController extends Controller
 {
-    public function index($hn){
+    /*
+    * @return \Illuminate\Http\Request
+    */
+    public function index($hn='000088973'){
+
         $model = DB::connection('mysql_hos')->select("
         SELECT doctor_cert.*, CONCAT(patient.pname, patient.fname, patient.lname) as fullname
         FROM doctor_cert 
@@ -24,7 +28,20 @@ class MDCAController extends Controller
     }
 
 
-    public function show($nv = ''){
+    /*
+    * @return \Illuminate\Http\Request
+    */
+    public function show($vn = ''){
+        $model = DB::connection('mysql_hos')->select("
+        SELECT doctor_cert.*, CONCAT(patient.pname, patient.fname, patient.lname) as fullname
+        FROM doctor_cert 
+        INNER JOIN patient ON doctor_cert.hn = patient.hn
+        WHERE doctor_cert.vn = :vn 
+        ORDER BY doctor_cert.create_datetime DESC", 
+        ['vn'=>$vn]);
 
+        return view('mdca.show',[
+            'model'=>$model
+        ]);
     }
 }

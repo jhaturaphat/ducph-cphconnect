@@ -44,7 +44,7 @@ Route::resource('setting', 'SettingController');
 Route::resource('userman', 'UsermanController');
 Route::resource('sessionregister', 'SessionregisterController');
 Route::resource('ptregister', 'PtRegisterController');
-// Route::resource('mdca', 'MDCAController');
+Route::resource('mdca', 'MDCAController');
 
 Route::get('emrsetting', 'EmrController@setting')->name('emrsetting');
 
@@ -81,5 +81,5 @@ Route::get('/oappconfirm', 'OappController@oappconfirm')->name('oappconfirm');
 
 Route::get('/checkup', 'CheckupController@index')->name('checkup');
 
-Route::get('/mdca/{hn}', 'MDCAController@index');
-Route::get('/mdca/show/{hn}', 'MDCAController@show');
+// Route::get('/mdca/{hn}', 'MDCAController@index');
+// Route::get('/mdca/show/{hn}', 'MDCAController@show');
