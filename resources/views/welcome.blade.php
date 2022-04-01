@@ -52,9 +52,7 @@
 
 </div>
 
-<script src="scripts/jquery.js"></script>
-<script src="scripts/bootstrap.min.js"></script>
-<script src="scripts/custom.js"></script>
+
 <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
 
 
@@ -64,13 +62,13 @@
         
         liff.ready.then(() => {
             // document.getElementById("isLoggedIn").append(liff.isLoggedIn())
-            if (liff.isLoggedIn()) {
-                getUserProfile()
+            if (!liff.isInClient() && liff.isLoggedIn()) {
+                getUserProfile();
             } else {
-                liff.login()
+                liff.login();
             }
         })
-        await liff.init({ liffId: lineliffid })
+        await liff.init({ liffId: lineliffid });
     }
     main();
 
@@ -82,8 +80,9 @@
 
     async function getUserProfile() {
         const profile = await liff.getProfile()
-        document.getElementById("displayName").append(profile.displayName)
-        document.getElementById("userId").append(profile.userId)
+        document.getElementById("displayName").append(profile.displayName);
+        document.getElementById("userId").append(profile.userId);
+        localStorage.setItem('userId', profile.userId);
         // document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
         console.log(profile);
         $('#displayName').val(profile.displayName);
@@ -94,7 +93,9 @@
 
 </script>
     
-
+<script src="scripts/jquery.js"></script>
+<script src="scripts/bootstrap.min.js"></script>
+<script src="scripts/custom.js"></script>
 
 </body>
 </html>

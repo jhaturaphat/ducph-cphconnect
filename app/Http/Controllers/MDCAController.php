@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class MDCAController extends Controller
 {
-    function index($hn){
+    public function index($hn){
         $model = DB::connection('mysql_hos')->select("
         SELECT doctor_cert.*, CONCAT(patient.pname, patient.fname, patient.lname) as fullname
         FROM doctor_cert 
@@ -19,7 +19,12 @@ class MDCAController extends Controller
         return view('mdca.index',[
             'model'=>$model,
             'moduletitle'=>'ใบรับรองแพทย์',
-            'view_menu'=>'enable'
+            'view_menu'=>'anable'
         ]);
+    }
+
+
+    public function show($nv = ''){
+
     }
 }
