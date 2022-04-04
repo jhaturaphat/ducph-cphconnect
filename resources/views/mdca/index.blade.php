@@ -1,7 +1,4 @@
 @extends('layouts.theme')
-@section('menu-active-emr','active-nav')
-@section('header_script')
-
 @section('content')
 
 <div class="page-content header-clear-small">

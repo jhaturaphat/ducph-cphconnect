@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\HDoctorCert;
 
 class MDCAController extends Controller
 {
@@ -11,6 +12,8 @@ class MDCAController extends Controller
     * @return \Illuminate\Http\Request
     */
     public function index($hn='000088973'){
+
+        $model = HDoctorCert::patient($hn);
 
         $model = DB::connection('mysql_hos')->select("
         SELECT doctor_cert.*, CONCAT(patient.pname, patient.fname, patient.lname) as fullname
