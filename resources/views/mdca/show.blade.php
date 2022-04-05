@@ -7,10 +7,35 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style> 
+  @font-face{
+    font-family: "THSarabanNew";
+    font-style: normal;
+    font-weight: normal;
+    src: url("{{URL::asset('fonts/th/THSarabunNew.ttf')}}") format('truetype')
+  }
+  @font-face{
+    font-family: "THSarabanNew";
+    font-style: normal;
+    font-weight: bold;
+    src: url("{{URL::asset('fonts/th/THSarabunNew Bold.ttf')}}") format('truetype')
+  }
+  @font-face{
+    font-family: "THSarabanNew";
+    font-style: italic;
+    font-weight: normal;
+    src: url("{{URL::asset('fonts/th/THSarabunNew Italic.ttf')}}") format('truetype')
+  }
+  @font-face{
+    font-family: "THSarabanNew";
+    font-style: italic;
+    font-weight: bold;
+    src: url("{{URL::asset('fonts/th/THSarabunNew BoldItalic.ttf')}}") format('truetype')
+  }
     body {
       padding: 0;
       margin: 0;
-      background: rgb(204,204,204); 
+      background: rgb(204,204,204);
+      font-family:  "THSarabanNew"
     }
     page {
       background: white;
