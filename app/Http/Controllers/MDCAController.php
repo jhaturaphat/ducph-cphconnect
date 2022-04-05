@@ -13,6 +13,8 @@ class MDCAController extends Controller
     */
     public function index($hn='000088973'){
 
+        $model = HDoctorCert::patient($hn);
+
         $model = DB::connection('mysql_hos')->select("
         SELECT doctor_cert.*, CONCAT(patient.pname, patient.fname, patient.lname) as fullname
         FROM doctor_cert 
