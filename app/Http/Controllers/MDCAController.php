@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use App\Models\HDoctorCert;
 use PDF;
 
 class MDCAController extends Controller
@@ -12,8 +14,7 @@ class MDCAController extends Controller
     * @return \Illuminate\Http\Request
     */
     public function index($hn='000088973'){
-
-        $model = HDoctorCert::patient($hn);
+        
 
         $model = DB::connection('mysql_hos')->select("
         SELECT doctor_cert.*, CONCAT(patient.pname, patient.fname, patient.lname) as fullname
@@ -43,14 +44,13 @@ class MDCAController extends Controller
         ORDER BY doctor_cert.create_datetime DESC", 
         ['vn'=>$vn]);
 
-        return PDF::loadFile(public_path().'/myfile.html')->save('/path-to/my_stored_file.pdf')->stream('download.pdf');
+        //$pdf = PDF::loadView('mdca.show', ['model'=>$model]);
+        //return $pdf->stream();
+        //Storage::put('public/pdf/invoice.pdf', $pdf->output());
+        //return $pdf->download('codingdriver.pdf');
 
-        $pdf = PDF::loadView('mdca.show', ['model'=>$model]);
-        // return $pdf->stream();
-        return $pdf->download('codingdriver.pdf');
-
-        // return view('mdca.show',[
-        //     'model'=>$model
-        // ]);
+        return view('mdca.show',[
+            'model'=>$model
+        ]);
     }
 }

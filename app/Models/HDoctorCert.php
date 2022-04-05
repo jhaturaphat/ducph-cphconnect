@@ -9,7 +9,7 @@ class HDoctorCert extends Model
     protected $table = 'doctor_cert';    
     protected $primaryKey = 'doctor_cert_id';
 
-    public function patient($hn=''){
+    public static function patient($hn=''){
         return $this->hasOne(HPatient::class,'hn','hn');
     }
 }
