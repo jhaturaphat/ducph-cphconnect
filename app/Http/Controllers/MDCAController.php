@@ -44,6 +44,8 @@ class MDCAController extends Controller
         ORDER BY doctor_cert.create_datetime DESC", 
         ['vn'=>$vn]);
 
+       $pdf = PDF::loadView('mdca.show', $model)->setPaper('a4')->save("pdf_mdca/pdf3.pdf");
+        exit;
         //$pdf = PDF::loadView('mdca.show', ['model'=>$model]);
         //return $pdf->stream();
         //Storage::put('public/pdf/invoice.pdf', $pdf->output());
@@ -59,7 +61,7 @@ class MDCAController extends Controller
 
         // Save file to the directory
 
-        $pdf->save("generatepdf/".$filename);
+        $pdf->save("pdf_mdca/".$filename);
 
         //Download Pdf
 
