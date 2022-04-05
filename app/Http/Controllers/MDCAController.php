@@ -49,8 +49,30 @@ class MDCAController extends Controller
         //Storage::put('public/pdf/invoice.pdf', $pdf->output());
         //return $pdf->download('codingdriver.pdf');
 
-        return view('mdca.show',[
-            'model'=>$model
-        ]);
+        // PDF############################
+
+        $pdf = PDF::loadView('mdca.show', ['model'=>$model]);
+
+        $pdf->setOptions(['isPhpEnabled'=> true,'isRemoteEnabled' => true]);
+
+        $filename = "generatepdf.pdf";
+
+        // Save file to the directory
+
+        $pdf->save("generatepdf/".$filename);
+
+        //Download Pdf
+
+        return $pdf->download("generatepdf.pdf");
+
+        // Or return to view pdf
+
+        //return view(‘pdfview’);
+
+        // PDF############################
+
+        // return view('mdca.show',[
+        //     'model'=>$model
+        // ]);
     }
 }
