@@ -34,8 +34,8 @@
                 <a href="{{ route('mdca.show', $data->vn) }}">
                     <i class="fa font-19 fa-stethoscope rounded-s color-green1-dark"></i>
                     <span class="">{{$data->note2}}</span>
-                    <strong class="">BBBB</strong>
-                    <i class="fa fa-chevron-right opacity-30"></i>
+                    <strong class="">{{$data->ptname}}</strong>
+                    <i class="fa fa-download opacity-70" aria-hidden="true"></i>
                 </a>
                 @endforeach
             </div>

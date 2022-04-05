@@ -81,5 +81,3 @@ Route::get('/oappconfirm', 'OappController@oappconfirm')->name('oappconfirm');
 
 Route::get('/checkup', 'CheckupController@index')->name('checkup');
 
-// Route::get('/mdca/{hn}', 'MDCAController@index');
-// Route::get('/mdca/show/{hn}', 'MDCAController@show');

@@ -1,11 +1,9 @@
 @extends('layouts.theme')
 @section('menu-active-emr','active-nav')
 @section('header_script')
-{{-- header --}}
-@endsection
+
 
 @section('content')
-
 
 <div class="page-content header-clear-small">
 
@@ -96,8 +94,4 @@
 </div>
 <!-- End of Page Content-->
 
-@endsection
 
-@section('footer_script')
-
-@endsection

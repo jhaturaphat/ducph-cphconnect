@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class MDCAController extends Controller
 {
@@ -40,8 +41,14 @@ class MDCAController extends Controller
         ORDER BY doctor_cert.create_datetime DESC", 
         ['vn'=>$vn]);
 
-        return view('mdca.show',[
-            'model'=>$model
-        ]);
+        return PDF::loadFile(public_path().'/myfile.html')->save('/path-to/my_stored_file.pdf')->stream('download.pdf');
+
+        $pdf = PDF::loadView('mdca.show', ['model'=>$model]);
+        // return $pdf->stream();
+        return $pdf->download('codingdriver.pdf');
+
+        // return view('mdca.show',[
+        //     'model'=>$model
+        // ]);
     }
 }

@@ -1,3 +1,8 @@
-<?php
+<table>
+    <thead>
+        <tr>
+            <th>))))))))))))))))</th>
+        </tr>
+    </thead>
+</table>
 
-print_r($model);
