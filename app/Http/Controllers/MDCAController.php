@@ -44,37 +44,14 @@ class MDCAController extends Controller
         ORDER BY doctor_cert.create_datetime DESC", 
         ['vn'=>$vn]);
 
-       $pdf = PDF::loadView('mdca.show', $model)->setPaper('a4')->save("pdf_mdca/pdf3.pdf");
-        exit;
-        //$pdf = PDF::loadView('mdca.show', ['model'=>$model]);
-        //return $pdf->stream();
-        //Storage::put('public/pdf/invoice.pdf', $pdf->output());
-        //return $pdf->download('codingdriver.pdf');
+        $path = 'images/logo_hosp.png';
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+        $model[0]->logo = $base64;
 
-        // PDF############################
-
-        $pdf = PDF::loadView('mdca.show', ['model'=>$model]);
-
-        $pdf->setOptions(['isPhpEnabled'=> true,'isRemoteEnabled' => true]);
-
-        $filename = "generatepdf.pdf";
-
-        // Save file to the directory
-
-        $pdf->save("pdf_mdca/".$filename);
-
-        //Download Pdf
-
-        return $pdf->download("generatepdf.pdf");
-
-        // Or return to view pdf
-
-        //return view(‘pdfview’);
-
-        // PDF############################
-
-        // return view('mdca.show',[
-        //     'model'=>$model
-        // ]);
+        return view('mdca.show',[
+            'model'=>$model[0]
+        ]);
     }
 }

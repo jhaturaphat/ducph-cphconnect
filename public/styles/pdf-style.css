@@ -1,0 +1,75 @@
+@font-face{
+    font-family: "THSarabanNew";
+    font-style: normal;
+    font-weight: normal;
+    src: url("../fonts/th/THSarabunNew.ttf") format('truetype')
+  }
+  @font-face{
+    font-family: "THSarabanNew";
+    font-style: normal;
+    font-weight: bold;
+    src: url("../fonts/th/THSarabunNew Bold.ttf") format('truetype')
+  }
+  @font-face{
+    font-family: "THSarabanNew";
+    font-style: italic;
+    font-weight: normal;
+    src: url("../fonts/th/THSarabunNew Italic.ttf") format('truetype')
+  }
+  @font-face{
+    font-family: "THSarabanNew";
+    font-style: italic;
+    font-weight: bold;
+    src: url("../fonts/th/THSarabunNew BoldItalic.ttf") format('truetype')
+  }
+    body {
+      padding: 0;
+      margin: 0;
+      background: rgb(204,204,204);
+      font-family:  "THSarabanNew"
+    }
+    page {
+      background: white;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 0.5cm;
+      box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+    }
+    page[size="A4"] {  
+      width: 21cm;
+      height: 29.7cm; 
+    }
+
+    /* LOGO */
+    .logo{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: auto;
+    }
+    .logo img{
+        margin: auto;
+        width: 120px;
+        margin-top: 50px;
+    }
+    .logo div{
+        min-width: 33.33%;
+        text-align: center;
+    }
+    h1, h2,h3,h4{
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .mycontainer{
+        width: 83%;
+        margin: auto;
+    }
+    .section{
+        border: 1px solid rgba(0,0,0,0.5);  
+        font-size: 1.2rem;  
+        padding: 15px;    
+    }
+    .row div{
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
