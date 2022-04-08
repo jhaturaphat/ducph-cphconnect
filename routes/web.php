@@ -71,7 +71,6 @@ Route::post('/bookcc', 'BookController@quecc')->name('bookcc');
 Route::post('/bookstore', 'BookController@store')->name('bookstore');
 
 Route::get('/card', 'CardController@index')->name('card');
-
 Route::get('/oapp', 'OappController@index')->name('oapp');
 Route::get('/oappdetail', 'OappController@detail')->name('oappdetail');
 Route::get('/checkin', 'OappController@checkin')->name('checkin');
