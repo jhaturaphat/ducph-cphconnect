@@ -38,6 +38,7 @@
     page[size="A4"] {  
       width: 21cm;
       height: 29.7cm; 
+      /* line-height: 3px; */
     }
 
     /* LOGO */
@@ -67,7 +68,8 @@
     .section{
         border: 1px solid rgba(110, 109, 109, 0.5);  
         font-size: 1.2rem;  
-        padding: 15px;    
+        padding: 15px;  
+        line-height: 25px;  
     }
     .row div{
         overflow: hidden !important;
@@ -75,4 +77,16 @@
     }
     ul li {
       list-style: none;
+    }
+    /* remark */
+    remark{
+      font-size: .7rem;
+    }
+
+    
+    @media print {
+      body, page[size="A4"] {
+        margin: 0;
+        box-shadow: 0;
+      }
     }

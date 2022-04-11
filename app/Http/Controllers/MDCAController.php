@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
 use App\Models\HDoctorCert;
-use PDF;
+use \Mpdf\Mpdf as MPDF;
 
 class MDCAController extends Controller
 {
     /*
     * @return \Illuminate\Http\Request
     */
-    public function index($hn='000088973'){
+    public function index($hn='000088973'){        
         
 
         $model = DB::connection('mysql_hos')->select("
@@ -50,8 +50,46 @@ class MDCAController extends Controller
         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
         $model[0]->logo = $base64;
 
+        // $pdf = MPDF::loadView('mdca.show', ['model'=>$model[0]]);
+        // return $pdf->stream('document.pdf');
+
         return view('mdca.show',[
             'model'=>$model[0]
         ]);
+    }
+
+    public function document()
+    {
+        // Setup a filename 
+        $documentFileName = "fun.pdf";
+ 
+        // Create the mPDF document
+        $document = new MPDF( [
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_header' => '3',
+            'margin_top' => '20',
+            'margin_bottom' => '20',
+            'margin_footer' => '2',
+        ]);     
+ 
+        // Set some header informations for output
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="'.$documentFileName.'"'
+        ];
+ 
+        // Write some simple Content
+        $document->WriteHTML('<h1 style="color:blue">TheCodingJack</h1>');
+        $document->WriteHTML('<p>Write something, just for fun!</p>');
+ 
+        // Use Blade if you want
+        //$document->WriteHTML(view('fun.testtemplate'));
+         
+        // Save PDF on your public storage 
+        Storage::disk('public')->put($documentFileName, $document->Output($documentFileName, "F"));
+         
+        // Get file back from storage with the give header informations
+        return Storage::disk('public')->download($documentFileName, 'Request', $header); //
     }
 }
